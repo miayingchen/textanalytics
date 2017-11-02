@@ -85,3 +85,40 @@ metadata
 body = str_sub(string = emails, start = breaks[,2])
 
 
+#1
+fruit = c("apple", "banana", "pear", "pineapple")
+
+#2
+str_detect(fruit, "a")
+str_detect(fruit, "^a") ### If the string starts with an 'a'
+str_detect(fruit, "a$") ### It the string ends with an 'a'
+str_detect(fruit, "[aeiou]") ### looking for these five characters 
+str_detect(fruit, "[a-d]") ### looking for one characters from the four characters
+
+#3 detect a string that starts with 'a' and ends with 'e'
+str_detect(fruit, "^a[a-z]*e$")
+
+#4
+phone = c("213 740 4826")
+parser = "[0-9]{3} [0-9]{3} [0-9]{4}"
+str_detect(phone, parser)
+
+
+phone = c("213 740 4826", "213-740-4826")
+parser = "[0-9]{3}[ -][0-9]{3}[ -][0-9]{4}"
+str_detect(phone, parser)
+
+phone = c("213 740 4826", "213-740-4826", "213.740.4826")
+parser = "[0-9]{3}[ -.][0-9]{3}[ -.][0-9]{4}"
+str_detect(phone, parser)
+
+#5
+cat(body[10])
+cat(body[18])
+
+str_extract(string = body, pattern = parser)
+
+#6
+zip = c("90028", "90028-0809")
+parser = "[0-9]{5}(-[0-9]{4})?"
+str_detect(string = zip, pattern = parser)
